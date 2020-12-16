@@ -29,6 +29,9 @@ var dl3 = letr5 + letr1 ;
 //Ajuste o número de caracteres da senha colocando as variáveis acima na variável pass.
 var pass = letr + numU + letr1 + dl2 + numD + letr2 + numC  + dl3 + numM ;
 
+//Shuffle/Embaralhar
+pass = pass.split('').sort(() => Math.floor(Math.random() * 100) - 50).join('');
+
 //Program/Programa.
 
 console.log("Gera-senha 1.0");
