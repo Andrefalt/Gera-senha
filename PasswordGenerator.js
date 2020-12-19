@@ -92,8 +92,29 @@ class PasswordGenerator {
         return symbol;
     }
 
+    generate() {
+        let password = "";
+
+        while (password.length < this._config.length) {
+            if (this._config.useLowercaseLetters) {
+                password += this._getRandomLetter("a", "z");
+            }
+            if (this._config.useUppercaseLetters) {
+                password += this._getRandomLetter("A", "Z");
+            }
+            if (this._config.useNumbers) {
+                password += this._getRandomNumber();
+            }
+            if (this._config.useSymbols) {
+                password += this._getRandomSymbol();
+            }
+        }
+
+        return password;
+    }
+
     run() {
-        console.info("Not implemented");
+        console.info(this.generate());
     }
 
 }
