@@ -114,11 +114,16 @@ class PasswordGenerator {
     }
 
     run() {
-        console.info(this.generate());
+        const password = this.generate();
+        console.info(`[${new Date().toISOString()}] Password generated:`, password);
     }
 
 }
 
-var generator = new PasswordGenerator();
+var config = new PasswordGeneratorConfig(30, true, true, true, true);
 
+var generator = new PasswordGenerator(config);
+
+generator.run();
+generator.run();
 generator.run();
