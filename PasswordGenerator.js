@@ -7,7 +7,29 @@ class PasswordGeneratorConfig {
         useNumbers,
         useSymbols) {
 
-        this.length = Number.isFinite(length) ? Number(length) : 20;
+        const lengthDefault = 20;
+        const useLowercaseLettersDefault = true;
+        const useUppercaseLettersDefault = true;
+        const useNumbersDefault = true;
+        const useSymbolsDefault = true;
+
+        if (length === undefined) {
+            length = lengthDefault;
+        }
+        if (useLowercaseLetters === undefined) {
+            useLowercaseLetters = useLowercaseLettersDefault;
+        }
+        if (useUppercaseLetters === undefined) {
+            useUppercaseLetters = useUppercaseLettersDefault;
+        }
+        if (useNumbers === undefined) {
+            useNumbers = useNumbersDefault;
+        }
+        if (useSymbols === undefined) {
+            useSymbols = useSymbolsDefault;
+        }
+
+        this.length = Number.isFinite(length) && length > 0 ? Number(length) : lengthDefault;
         this.useLowercaseLetters = Boolean(useLowercaseLetters);
         this.useUppercaseLetters = Boolean(useUppercaseLetters);
         this.useNumbers = Boolean(useNumbers);
