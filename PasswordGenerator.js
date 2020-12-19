@@ -108,6 +108,15 @@ class PasswordGenerator {
             if (this._config.useSymbols) {
                 password += this._getRandomSymbol();
             }
+
+            if (password.length === 0) {
+                console.warn("Invalid configuration. The password generated is empty.");
+                break;
+            }
+        }
+
+        if (password.length > this._config.length) {
+            password = password.substr(0, this._config.length);
         }
 
         return password;
