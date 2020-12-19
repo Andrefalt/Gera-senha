@@ -57,6 +57,13 @@ class PasswordGenerator {
         console.info(JSON.stringify(this._config, null, 2));
     }
 
+    _getRandomNumber(min = 0, max = 9) {
+        const random = Math.random();
+        const range = max - min + 1;
+        const number = Math.floor(random * range) + min;
+        return number;
+    }
+
     run() {
         console.info("Not implemented");
     }
