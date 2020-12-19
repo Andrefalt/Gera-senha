@@ -18,6 +18,23 @@ class PasswordGeneratorConfig {
 
 class PasswordGenerator {
 
+    constructor(config) {
+        if (!config ||
+            !config.constructor ||
+            config.constructor.name != PasswordGeneratorConfig.prototype.constructor.name) {
+
+            this._config = new PasswordGeneratorConfig();
+
+            console.info("Default configuration loaded:");
+        } else {
+            this._config = config;
+
+            console.info("Configuration loaded:");
+        }
+
+        console.info(JSON.stringify(this._config, null, 2));
+    }
+
     run() {
         console.info("Not implemented");
     }
