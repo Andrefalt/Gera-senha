@@ -92,6 +92,16 @@ class PasswordGenerator {
         return symbol;
     }
 
+    _shuffleText(text) {
+        const string = String(text);
+        const arrayOfChars = string.split('');
+        const arrayOfCharsInRandomOrder = arrayOfChars.sort(
+            () => this._getRandomNumber(-1, 0)
+        );
+        const stringWithCharsInRandomORder = arrayOfCharsInRandomOrder.join('');
+        return stringWithCharsInRandomORder;
+    }
+
     generate() {
         let password = "";
 
@@ -114,6 +124,8 @@ class PasswordGenerator {
                 break;
             }
         }
+
+        password = this._shuffleText(password);
 
         if (password.length > this._config.length) {
             password = password.substr(0, this._config.length);
