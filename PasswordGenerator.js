@@ -64,6 +64,34 @@ class PasswordGenerator {
         return number;
     }
 
+    _getRandomLetter(firstLetter, lastLetter) {
+        const codeOfLetter = this._getRandomNumber(
+            firstLetter.charCodeAt(0),
+            lastLetter.charCodeAt(0)
+        );
+        const letter = String.fromCharCode(codeOfLetter);
+        return letter;
+    }
+
+    _getRandomSymbol() {
+        const codesFrom0to127 = [...Array(127 + 1).keys()];
+        const codesWithoutSpecialChar = codesFrom0to127.filter(code => (code <= 31) === false);
+        const codesWithoutSpace = codesWithoutSpecialChar.filter(code => (code === 32 || code === 127) === false);
+        const codesWithoutNumbers = codesWithoutSpace.filter(code => (code >= "0".charCodeAt(0) && code <= "9".charCodeAt(0)) == false);
+        const codesWithoutUppercaseLetter = codesWithoutNumbers.filter(code => (code >= "A".charCodeAt(0) && code <= "Z".charCodeAt(0)) == false);
+        const codesWithoutLowercaseLetter = codesWithoutUppercaseLetter.filter(code => (code >= "a".charCodeAt(0) && code <= "z".charCodeAt(0)) == false);
+        const codesOfSymbols = codesWithoutLowercaseLetter;
+
+        const codesOfSymbolsRandomIndex = this._getRandomNumber(
+            0,
+            codesOfSymbols.length - 1
+        );
+        const codeOfSymbol = codesOfSymbols[codesOfSymbolsRandomIndex];
+        const symbol = String.fromCharCode(codeOfSymbol);
+
+        return symbol;
+    }
+
     run() {
         console.info("Not implemented");
     }
